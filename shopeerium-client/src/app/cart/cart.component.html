@@ -1,0 +1,91 @@
+<div *ngIf="cart" >
+
+    <div class="container mb-4 text-white bg-dark">
+
+        <!-- Header above yellow line -->
+        <div class="row item-header pt-2 justify-content-between ">
+
+
+            <div class="col-sm-9 col-xxs-6 pt-2">
+                <input type="checkbox" [checked]="cart.isChecked" [disabled]="!cart.stock" (change)="handleSelection()"/>
+                <span class="label ms-4"> 
+                    Sold By: 
+                    <a class="white" routerLink="/shop/{{cart.sellerUsername}}">
+                        {{cart.sellerUsername}}
+                    </a>
+                </span>
+
+            </div>
+
+            <div class="col-sm-3 col-xxs-6 button-container text-end">
+                <button type="button" class="btn delete-button btn-sm " (click)="deleteCart()">
+                    <i class="fas fa-trash"></i> &nbsp;
+                    Delete
+                </button>    
+            </div>
+        </div>
+
+
+        <div class="row item-body mt-1 pb-3">
+
+        
+            <div class="col image-container">
+                <a routerLink="/products/{{cart.productId}}">
+                    <img class="" src="{{cart.imgUrl}}"/>
+                </a>
+            </div>
+            
+
+            <div class="centered col text-center">
+                <a routerLink="/products/{{cart.productId}}">
+                    <h5 class="yellow"> {{cart.title}} </h5>
+                </a>                
+            </div>
+            
+
+            <div class="centered col text-white" >
+                <h5> ₱ {{cart.price}} </h5>
+            </div>
+
+            <div class="col mt-3">
+
+                <div class="row">
+
+                    <div class="input-group mt-5">
+
+                        <button class="spinner btn" [disabled]="!cart.stock" (click)="decrement() ">
+                            <i class="fas fa-minus"></i>
+                        </button>     
+
+                        <input type="number" class="quant-input mx-2" id="quantity" name="quantity" [disabled]="!cart.stock"
+                        min="1" max="{{cart.stock}}" [(ngModel)]="cart.quantity" (keyup)="checkQuantity()"> 
+
+                        <button class="spinner btn" [disabled]="!cart.stock" (click)="increment()">
+                            <i class="fas fa-plus"></i>
+                        </button>            
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-3 label" *ngIf="cart.stock">
+                    <p> Units Left : {{cart.stock}} </p>
+                </div>
+                
+                <div class="row mt-3 label" *ngIf="!cart.stock">
+                    <p> Out of Stock </p>
+                </div>
+
+            </div>
+
+            <div class="col centered orange">
+                <h4> ₱{{cart.quantity*cart.price}}  </h4>            
+            </div>
+
+
+
+        </div>
+    </div>
+    
+</div>
+

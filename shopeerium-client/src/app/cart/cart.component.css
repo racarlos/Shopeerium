@@ -1,0 +1,57 @@
+.container{
+    height: 250px;
+    width: 80%;
+    border: none;
+}
+
+.item-header{
+    height: 20%;
+    border-bottom: orange solid 2px;
+    padding: 0;
+}
+
+.item-body{
+    height: 80%;
+}
+
+.col{
+    height: 100%;
+}
+
+.image-container{
+    height: 100%;
+    width: auto;
+}
+
+.image-container img{
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}   
+
+.buton-container{
+    overflow: hidden;
+    width: 25%;
+}
+
+.delete-button{
+    background-color: crimson;
+    font-weight: 600;
+    width: 40%;
+    height: 80%;
+}
+
+
+a{
+    text-align: left;
+    font-weight:600;
+    text-decoration:none; 
+    cursor:pointer;  
+}
+  
+a:hover{
+    color: #ffc107;
+    text-decoration: underline;
+}
+

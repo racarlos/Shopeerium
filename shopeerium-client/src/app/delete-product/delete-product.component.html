@@ -1,0 +1,55 @@
+
+<div class="container product-selector mt-4" *ngIf="!finishedTransaction">
+    <form class="mb-4">
+
+        <div class="input-group">
+            <button class="btn product-edit-button" type="button" (click)="selectProduct()"> Submit </button>
+
+            <select class="form-select product-edit-select form-select-lg" [(ngModel)]="selectedProductId" name="product-selection" 
+            id="product-selection" required>
+                <option value="" selected disabled hidden> Select The Product to Delete </option>
+                
+                <option *ngFor="let product of products" [value]="product.productId">
+                    ID: {{product.productId}} - {{product.title}}
+                </option>
+            </select>    
+        </div>
+    </form>
+
+    <div class="row warn-confirm bg-dark label" *ngIf="hasSelectedProduct">
+
+        <div class="col-xl-3 centered">
+            <img src="../../assets/general/danger-delete.svg">
+        </div>
+
+        <div class="col-xl-9 mt-4">    
+            
+            <div class="row mt-2 ">
+                <span class="label ">
+                    <span class="red"> Deleting a product </span> will cause it to be deleted in the users cart and in the product listing please make sure 
+                    that you want to proceed with this action.
+                </span>    
+            </div>
+
+
+            <div class="row centered mt-3">
+                <button class="btn yellow" type="button" (click)="deleteProduct()">
+                    Delete Product
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    
+
+
+</div>
+
+
+<div class="container" *ngIf="finishedTransaction">
+    <app-transaction-complete [transactionSuccessful]="transactionSuccessful"
+    [sellerUsername]="shopOwner" [message]="message" [origin]="'shop-page'"> 
+    </app-transaction-complete>
+</div>

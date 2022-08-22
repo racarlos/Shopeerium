@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    shopeerium_client:                               # Front End Server
+        volumes:
+            - ./shopeerium-client:/app               # References folder of Node app
+        ports: 
+            - 4200:4200
+        command: 'bash start.sh'
+
+    shopeerium_server:                               # Back End Server
+        volumes: 
+            - ./shopeerium-server:/app               # References folder of Angular app

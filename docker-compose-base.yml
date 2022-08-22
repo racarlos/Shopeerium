@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  shopeerium_client:                              
+      image: 443736785131.dkr.ecr.ap-southeast-1.amazonaws.com/shopeerium_client
+      build: shopeerium-client
+      ports: 
+          - 80:80
+      command: 'bash start-env.sh'
+      deploy: 
+        resources:
+          limits:
+            cpus: '1'
+            memory: 2048M
+
+  shopeerium_server:                 
+      image: 443736785131.dkr.ecr.ap-southeast-1.amazonaws.com/shopeerium_server
+      build: shopeerium-server  
+      ports:
+          - 3000:3000
+      environment:
+          - DB_NAME=shopeeriumdb                   # name of mysql db  
+          - DB_HOST=shopeerium_sql                  # name of docker container references mysqldb below
+          - DB_PORT=3306
+          - DB_USER=root
+          - DB_PASSWORD=verysecure                 # Crypto generated token for login and refreshing
+          - ACCESS_TOKEN_SECRET=8fe885513ad746bb49d9a0e38afc7d74a46289714fd2a1632d33b2d60d255637918480d99861f04deccfa30ed630669962f6cfd9ee150192aab984197ba980290f6ee2927bd381ddd65ed70ae7841644e35123dabc8610e66f4c28a1dcb13f31773f7a99b6ef5cdfafec40e7cc89c5d37a083a1d805a82368cc7d0dd28ccfbcc
+          - REFRESH_TOKEN_SECRET=7c7a2109cd5e867135b0b998034dd1efe71b2f84f84fb9084189de6be39caf04fdfd7ba793b26da469faddc09df487fb8c17f78a8795c06cbe4bba21d3db22a7dd3984c7ef31542d88ea95e4fe1f226bdf4051dce0261c92e530a65416d8fe5dd954483ac11da59a3df9c3b3ed8fc9641bed71eefe8a3dabe74309377850e9d1
+
+      command: "bash start.sh shopeerium_sql:3306 shopeerium_redis:6379"
+      
+  shopeerium_sql:                                   # Database Server
+      image: mysql:5.7
+      ports:
+          - 3306:3306
+      environment:
+          - MYSQL_ROOT_PASSWORD=verysecure
+          - MYSQL_DATABASE=shopeeriumdb
+
+  shopeerium_redis:
+      image: redis
+      ports:
+          - 6379:6379
+      command: 'redis-server --requirepass "securepassword"'

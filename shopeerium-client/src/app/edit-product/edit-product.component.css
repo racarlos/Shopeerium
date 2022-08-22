@@ -1,0 +1,67 @@
+.product-selector{
+    width: 70%;
+    height: 140px;
+}
+
+.product-edit-select{
+    width: 50%;
+    color: #ffc107;
+    background: #212529;
+    outline: none;
+    font-size: x-large;
+    border-radius: 70px;
+    border-top:black solid 3px;
+    border-bottom: black solid 3px;
+    border-right: black solid 3px;
+    border-left: none;
+}
+
+select option{
+    background-color: #212529;
+}
+
+
+.product-edit-button{
+    border-radius: 70px;
+    border: black solid 3px;
+    background-color: #ee4d2d;
+    font-size: large;
+    font-weight: 700;
+    width: 150px;
+}
+
+
+.edit-product-form{
+    width: 50%;
+    padding: 20px;
+}
+
+.form-title{
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+input[type='number']{
+    width: 100%;
+    font-size: initial;
+}
+
+
+button[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 60%;
+    background-color: #ffc107;
+    font-weight: bold;
+    font-size: larger;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: #ee4d2d;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+

@@ -1,0 +1,41 @@
+<div class="container category-list bg-dark mt-4" *ngIf="categories">
+
+    <div class="row ">
+
+        <div class="col" *ngFor="let category of firstRow">
+            <a routerLink="/category/{{category}}">  
+
+                <div class="category-container mt-2 mb-2">
+                    <div class="category-image-container">
+                        <img class="category-image" src="{{assetsUrl}}/categories/{{category}}">
+                    </div>
+                    <span class="orange category-label"> {{category}} </span>
+    
+                </div>
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        
+        <div class="col" *ngFor="let category of secondRow">
+            <a routerLink="/category/{{category}}" >  
+
+                <div class="category-container mt-2 mb-2">
+                    <div class="category-image-container">
+                        <img class="category-image" src="{{assetsUrl}}/categories/{{category}}">
+                    </div>
+                    <span class="orange category-label"> {{category}} </span>
+    
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>

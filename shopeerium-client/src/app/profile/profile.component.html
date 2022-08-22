@@ -1,0 +1,59 @@
+<div class="container mt-4 bg-dark text-white temp" *ngIf="user">
+
+    <div class="row seller-page-header mb-2 bg-dark text-white">
+        
+        <div class="col-sm-3 logo-container mx-3 mt-2 ">
+            <div class="shop-logo">
+                <img src='{{assetsUrl}}/users/{{user.imgUrl}}' alt="user-image"/>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-5 ms-3">
+
+            <div class="row h-50 centered shop-name yellow ">
+                {{user.username}}
+            </div>
+
+            <div class="row h-50 ">
+                <div class="label mt-1">
+                    <img class="shop-header-icon" src="../../assets/seller-page/user.svg" > 
+                    Display Name : <span class="orange"> {{user.firstName}} {{user.lastName}} </span>
+                </div>
+
+                <div class="label h-25">
+
+                    <img class="shop-header-icon" src="../../assets/seller-page/role.svg" > 
+                    Role : <span class="orange"> {{user.role}} </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="label mt-4">
+                <img class="shop-header-icon" src="../../assets/seller-page/telephone.svg" > 
+                Mobile Number:  <span class="orange"> (+63) {{user.number}} </span>
+            </div>
+            
+            <div class="label mt-4">
+                <img class="shop-header-icon" src="../../assets/seller-page/email.svg" > 
+                Email: <span class="orange"> {{user.email}} </span>
+            </div>
+
+            <div class="label mt-4">
+
+                <img class="shop-header-icon" src="../../assets/seller-page/calendar.svg" > 
+                Date Joined : <span class="orange"> August 2021 </span>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

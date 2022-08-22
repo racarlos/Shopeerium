@@ -1,0 +1,70 @@
+.seller-page-header{
+    height: 210px;
+    border: solid 3px black;
+}
+
+.seller-page-utils{
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 40px;
+    border: black solid 3px;
+}
+
+.seller-page-utils img{
+    border: black solid 3px;
+    border-radius: 20px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.seller-page-utils .col-sm-3{
+    border-radius: 20px;
+}
+
+.seller-page-utils .col-sm-3:hover{
+    background-color: #4b4f54;
+}
+
+
+.seller-page-utils p{
+    margin-top: 5px;
+    color: #ee4d2d;
+}
+
+.col-sm-3{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+img{
+    object-fit: contain;
+}
+
+.shop-header-icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.shop-name{
+    font-weight: 700;
+    font-size: xx-large;
+}
+.shop-logo {
+    height: 100%;
+}
+
+.shop-logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    outline: none;
+}
+
+.products-sold{
+    width: 80%;
+    margin: 0 auto;
+    border: black solid 3px;
+}

@@ -1,0 +1,25 @@
+.empty-cart{
+    border: black 3px solid;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.img-container{
+    height: 70%;
+}
+.empty-cart img{
+    object-fit: contain;
+}
+
+.empty-cart p{
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.success{
+    color: chartreuse;
+}
+
+.fail{
+    color: orangered;
+}

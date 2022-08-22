@@ -1,0 +1,48 @@
+.register-container{
+    width: 600px;
+    margin: 0 auto;
+    border: solid black 2px;
+    border-radius: 30px;
+    margin-top: 5%;
+}
+
+.register-icon{
+    border: solid 3px #ffc107;
+    width: 20%;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.upload-button{
+    background-color: #ee4d2d;
+    border: black solid 2px;
+    font-weight: 600;
+    width: 100%;
+}
+
+
+
+input[type='number']{
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+input{
+    font-size: 18px;
+}
+
+.register-button{
+    width: 100%;
+    border: solid 3px black;
+    border-radius: 30px;
+    background-color: #ee4d2d;
+    font-weight: 700;
+}
+
+.error-message {
+    height: 50px;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+}

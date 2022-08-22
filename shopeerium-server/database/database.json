@@ -1,0 +1,12 @@
+{
+    "dev": {
+        "driver": "mysql",
+        "database": { "ENV": "DB_NAME" },
+        "host": { "ENV": "DB_HOST" },
+        "port": { "ENV": "DB_PORT" },
+        "user": { "ENV": "DB_USER" },
+        "password": { "ENV": "DB_PASSWORD" },
+        "multipleStatements": true,
+        "sql-file": true 
+    }
+  }

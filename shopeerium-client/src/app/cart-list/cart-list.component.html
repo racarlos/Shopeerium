@@ -1,0 +1,84 @@
+<div class="container align-items-center mt-5 mb-5" *ngIf="carts.length">
+
+    <div class="row mb-4 description label text-white">
+        
+        <div class="col centered">
+            Product 
+        </div>
+
+        <div class="col centered">
+            Title
+        </div>
+
+        <div class="col centered">
+            Unit Price
+        </div>
+
+        <div class="col centered">
+            Quantity
+        </div>
+
+        <div class="col centered">
+            Total Price
+        </div>
+
+    </div>
+
+    <div class="row" *ngFor="let cart of carts">
+        <app-cart [cart]="cart" 
+        (checkedCartEvent)="addCartToSelection($event)" 
+        (uncheckedCartEvent)="removeCartFromSelection($event)" 
+        (updateCartEvent)="updateCartSelection($event)"
+        (deleteCartEvent)="deleteCart($event)"
+        #cartRef>
+        </app-cart>
+    </div>
+
+    <div class="row checkout">
+        <div class="col centered label text-white">
+
+
+            <span class="mx-4">
+                <input type="checkbox" [(ngModel)]="checkedAll" (change)="selectAllCarts()" />
+            </span>
+
+            <span>
+                Select All : &nbsp; {{totalQuantity}}
+            </span>
+
+        </div>
+
+        <div class="col centered label text-white ">
+            Total Price : &nbsp; ₱{{totalPrice}}
+        </div>
+
+
+        <div class="col centered ">
+            <button class="btn checkout-btn align-middle" [disabled]="!selectedCarts.length" (click)="checkOut()">
+                <img src="https://img.icons8.com/material-outlined/24/212529/checkout.png"/>
+                Check Out
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container align-items-center mt-5 mb-5" *ngIf="!carts.length">
+    <div class="empty-cart bg-dark yellow">
+
+        <div class="img-container centered mt-3">
+            <img src='../../assets/general/empty-cart.svg'/>
+        </div>
+
+        <div class="centered white mt-2 " >
+            <p>
+                Your shopping cart is empty. Please add items to your cart, like right now. 
+            </p>
+        </div>
+        <div class="centered mt-2 mb-4">
+            <button class="btn checkout-btn" routerLink="/dashboard">
+                Go Shoppping Now
+            </button>
+        </div>
+    </div>
+</div>

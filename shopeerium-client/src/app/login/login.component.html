@@ -1,0 +1,34 @@
+
+<div class="login-container bg-dark mb-5">
+
+    <img class="login-icon centered" src="../../assets/general/login.svg"> 
+
+    <form class="mt-1" ngNativeValidate>
+        <h3 class="yellow mb-4">  Login Here </h3>
+
+        <div class="login-box ">
+            <p class="yellow" > Username </p>
+            <input class="form-control" [(ngModel)]="loginUserData.username" type="text" name="username"
+            minlength="4" pattern="^[A-Za-z0-9.]{4,16}$" maxlength="16" placeholder="Enter Username" 
+            title="Usernames must be 4 to 16 characters long. Only alphanumeric characters and periods are allowed." 
+            required>
+    
+            <p class="yellow"> Password </p>
+            <input class="form-control" [(ngModel)]="loginUserData.password" type="password" name="password" 
+            minlength="8" pattern="^.{8,32}$" maxlength="32" placeholder="Enter Password" 
+            title="Passwords must be 8 to 32 characters long." required>
+
+            <Input class="login-button" (click)="loginUser()" type="submit" name="" value="Login">
+        </div>
+
+        <div *ngIf="invalidCredentials" class="warning bg-danger ">
+            <p> Sorry! Username and Password Combination does not exist. Please try again. </p>
+        </div>
+
+
+        <div> <a class="orange"  href="#"> Lost your Password? </a> </div>
+        <div> <a class="orange"  routerLink="/register"> Don't have an account? </a> </div>
+
+    </form>
+</div>
+

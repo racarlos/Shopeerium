@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="currentRoute != '/login' && currentRoute != '/register'">
+    <div class="container centered">
+        <div class="row centered mt-1">
+
+            <!-- Logo and Name -->
+            <div class="col">
+                <a class="navbar-brand" routerLink="/">
+                    <img class="header-logo" src="../../assets/general/logo.svg" width="60" height="60" alt="">
+                    <span class="yellow"> Shopeerium </span> 
+                </a>
+            </div>    
+
+            <!-- Search Box and Search Button -->
+            <div class="col ms-3 centered">
+                <form class="searchbar">
+                    <input class="form-control" type="text" [(ngModel)]="pattern" (keypress)="enterSearch($event)"name="search"
+                    placeholder="Search for items here ..."/>
+                </form>
+
+                <button class="searchButton ms-1" (click)="doSearch()"> 
+                    <img class="header-icons cart-icon" src="../../assets/general/search-hover.svg">
+                </button>
+            </div>
+
+            <!-- Buttons Here -->
+            <div class="col centered ms-3 justify-content-around">
+
+                <!-- Switch between cart and seller page based on role-->
+
+                <a class="nav-link mx-1" *ngIf="userIsLoggedIn && role === 'buyer'" routerLink="cart">
+                    <img class="header-icons cart-icon" src="../../assets/general/header-cart-hover.svg">                 
+                </a>
+
+                <a class="nav-link mx-1" *ngIf="userIsLoggedIn && role === 'seller' && username != ''" routerLink="shop/{{username}}">
+                    <img class="header-icons cart-icon" src="../../assets/general/seller-hover.svg">
+                </a>
+
+                <a class="nav-link mx-1" routerLink="profile">
+                    <img class="header-icons profile-icon" src="../../assets/general/header-profile-hover.svg">   
+                </a>
+                
+                <a class="nav-link mx-1" *ngIf="userIsLoggedIn" routerLink="" (click)="logoutUser()">
+                    <img class="header-icons profile-icon" src="../../assets/general/logout-hover.svg">
+                </a>
+
+
+            </div>
+
+        </div> 
+    </div>
+</nav>
+

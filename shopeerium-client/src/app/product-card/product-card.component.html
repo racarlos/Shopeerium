@@ -1,0 +1,13 @@
+<div *ngIf="product" class = "card-container"> 
+    <div class="card text-white bg-dark border-dark">
+        <img class="card-img-top" src={{product.imgUrl}} alt={{product.title}}/>
+
+        <div class="card-body">
+            <h5 class="card-title"> 
+                {{product.title}}
+            </h5>
+            <h6 class="card-price"> ₱ {{product.price}}</h6>
+            <h6>{{product.amountSold}}  sold</h6>
+      </div> 
+    </div>
+</div>

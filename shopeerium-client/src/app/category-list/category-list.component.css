@@ -1,0 +1,42 @@
+.category-container{
+    border: solid 3px ;
+    width: 160px;
+    text-align: center;
+}
+
+.category-image-container{
+    width: 100%;
+    height: 160px;
+}
+
+.category-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.category-list{
+    padding-left: 10px;
+    border: black solid 3px;
+    border-radius: 30px;
+}
+
+.category-image-container{
+    border: solid 3px black;
+}
+
+.category-label{
+    font-size: large;
+    font-weight: 500;
+}
+
+a { color: inherit; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+
+.category-container:hover{
+    cursor:pointer;  
+    border: solid 3px #ee4d2d;
+}

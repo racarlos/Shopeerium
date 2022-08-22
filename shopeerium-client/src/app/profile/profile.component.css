@@ -1,0 +1,50 @@
+.container {
+    border: solid 3px black;
+}
+
+.seller-page-header{
+    height: 210px;
+    
+}
+
+.logo-container{
+    align-items: center;
+    text-align: center;
+}
+
+.col-sm-3{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+img{
+    object-fit: contain;
+}
+
+.shop-header-icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.shop-name{
+    font-weight: 700;
+    font-size: xx-large;
+}
+
+.shop-logo {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+
+    border: black solid 3px;
+    border-radius: 100%;
+}
+
+.shop-logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    outline: none;
+}

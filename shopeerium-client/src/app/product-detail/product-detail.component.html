@@ -1,0 +1,101 @@
+<div class="container product-page" *ngIf="product">
+    <div class="row m-3 mt-4">
+
+
+        <div class="col lg-6 mb-4">
+            <div class = "image-container bg-dark justify-content-evenly">
+                <img class = "product-image" src="{{assetsUrl}}/products/{{product.imgUrl}}"/> 
+            </div>
+        </div>
+
+
+        <div class="col bg-dark text-white lg-6 mb-4 px-3">
+            
+            <div class= "text-warning mt-3 mb-3">
+                <h2>  {{product.title}} </h2>
+            </div>
+            
+
+            <div class= "orange">
+                <h3> Price: ₱ {{product.price}}</h3> 
+            </div>
+
+            <div class = "row justify-content-between">
+                <div class="col text-start" *ngIf="product.stock">
+                    <h4> {{product.stock}} pieces available</h4>
+                </div>
+
+                <div class="col text-start" *ngIf="!product.stock">
+                    <h4> Out of Stock </h4>
+                </div>                
+
+                <div class="col text-end">
+                    <h4> {{product.amountSold}} pieces sold</h4>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row px-2">
+                <div class="col-md-auto mx-2 category-tag" *ngFor="let category of product.categories">
+                    <a routerLink="/category/{{category}}">
+                        {{category}}
+                    </a>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <div class="description-area">
+                <h5> {{product.description}} </h5>
+            </div>
+
+
+            <hr>
+
+            <div>
+
+                <div class="input-group mt-3">
+                    <button class="spinner btn"  [disabled]="!product.stock || role==='seller'" (click)="decrement()">
+                        <i class="fas fa-minus"></i>
+                    </button>            
+                    
+                    <input type="number" class="quant-input mx-2" id="quantity" name="quantity" [disabled]="!product.stock || role==='seller' "
+                    min="1" max="{{product.stock}}" [(ngModel)]="product.quantity" (keyup)="checkQuantity()" > 
+
+                    <button class="spinner btn"  [disabled]="!product.stock || role==='seller' " (click)="increment()">
+                        <i class="fas fa-plus"></i>
+                    </button>            
+
+                    <!-- Disable if stock is 0  -->
+                    <button class ="btn add-to-cart ms-5" [disabled]="!product.stock || role==='seller'" (click)="addToCart()">
+                        <i class="fas fa-cart-plus"></i> 
+                        Add to Cart
+                    </button>
+                </div>
+
+     
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                <span class="label"> Sold By:
+                    <a routerLink="/shop/{{product.sellerUsername}}">
+                        <span class="seller-tag"> {{product.sellerUsername}} </span>
+                    </a>
+                </span> 
+            </div>
+
+    
+        </div>
+    </div>
+
+    
+
+
+
+
+
+</div>

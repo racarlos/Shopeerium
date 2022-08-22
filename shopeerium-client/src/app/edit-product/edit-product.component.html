@@ -1,0 +1,122 @@
+
+<div class="container product-selector mt-4" *ngIf="!hasSelectedProduct && !finishedTransaction">
+    <form class="mb-4">
+
+        <div class="input-group">
+            <button class="btn product-edit-button" type="button" (click)="selectProduct()"> Submit </button>
+
+            <select class="form-select product-edit-select form-select-lg" [(ngModel)]="selectedProductId" name="product-selection" 
+            id="product-selection" required>
+                <option value="" selected disabled hidden> Select The Product to Edit </option>
+                
+                <option *ngFor="let product of products" [value]="product.productId">
+                    ID: {{product.productId}} - {{product.title}}
+                </option>
+            </select>    
+        </div>
+    </form>
+</div>
+
+<div class="container edit-product-form my-4 bg-dark yellow" *ngIf="hasSelectedProduct && !finishedTransaction">
+
+    <div class="centered yellow">
+        <p class="form-title"> [ Edit Product Form ] </p>
+    </div>
+
+    <form #editProductForm="ngForm" (ngSubmit)="validateUpdateInfo(editProductForm.value)" ngNativeValidate>
+
+        <div class="mb-4"> 
+            <label for="sellerUsername" class="form-label label" >
+                Seller Username* 
+            </label>
+            <input class="form-control" [(ngModel)]="selectedProduct.sellerUsername" type="text" name="sellerUsername" id="sellerUsername"
+            minlength="3" maxlength="32" [disabled]="selectedProduct.sellerUsername" required>
+        </div> 
+
+        <div class="mb-4"> 
+            <label for="productId" class="form-label label" >
+                Product ID* 
+            </label>
+            <input class="form-control" [(ngModel)]="selectedProduct.productId" type="text" name="productId" id="productId"
+            minlength="3" maxlength="32" [disabled]="selectedProduct.productId!==0" required>
+        </div> 
+
+
+        <div class="mb-4"> 
+            <label for="title" class="form-label label" >
+                Product Title* 
+            </label>
+    
+            <input  class="form-control" [(ngModel)]="selectedProduct.title" type="text" name="title" id="title"
+            minlength="3" maxlength="32" pattern="^.{3,32}$" placeholder="Enter Product Title"  
+            title="Product Title must be 3 to 32 characters long. Any characters are allowed" 
+            required>
+        </div>
+
+        <div class="mb-4">
+            <label for="price" class="form-label label">
+                Product Price in Pesos*
+            </label>
+            <input class="form-control" [(ngModel)]="selectedProduct.price" pattern="^[0-9]{1,14}.?[0-9]{1,2}?$" 
+            name="price" id="price" type="number" min="1" step="any" required/>
+        </div>   
+    
+    
+        <div class="mb-4">
+            <label for="stock" class="form-label label">
+                Amount in Stock*
+            </label>
+            <input class="form-control"  [(ngModel)]="selectedProduct.stock" pattern="^[0-9]{1,16}?" name="stock" 
+            id="stock" type="number" min="1" step="1" required/>
+        </div>   
+
+        <div class="mb-4" *ngIf="hasInitializedCategories">
+            <label for="categories" class="form-label label">
+                Product Categories (Check all that apply) *
+            </label>
+
+            <div *ngFor="let category of categories">
+                <label class="mt-1">
+                    <input type="checkbox" name="categories" value={{category.value}} [checked]="category.checked" (change)="category.checked=!category.checked"/>
+                    {{category.name}}
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="imageFile" class="form-label label upload-label yellow">
+                Update Product Image 
+            </label>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <input class="form-control" type="file" accept=".jpg,.jpeg,.png,.jfif" (change)="selectImage($event)"
+                    name="imageFile" id="imageFile">    
+                </div>
+    
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="description" class="form-label label">
+                Product Description* 
+            </label>
+            <textarea class="form-control" [(ngModel)]="selectedProduct.description" name="description" id="description"  cols="10" rows="15" 
+            placeholder="Enter Product Description" type="text" required> </textarea>
+        </div>
+
+        <div class="centered">
+            <button type="submit" name="submit" class="btn"> 
+                Submit
+            </button>
+        </div>
+
+    </form> 
+</div>
+
+
+<div class="container" *ngIf="finishedTransaction">
+    <app-transaction-complete [transactionSuccessful]="transactionSuccessful"
+    [sellerUsername]="shopOwner" [message]="message" [origin]="'shop-page'"> 
+    </app-transaction-complete>
+</div>

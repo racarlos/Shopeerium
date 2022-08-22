@@ -1,0 +1,35 @@
+.row{
+    width: 100%;
+    margin: auto auto;
+    display: flex;  
+}
+
+.header-logo{
+    object-fit: contain;
+}
+
+.navbar-brand{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.header-icons{
+    width: 35px;
+    height: 35px;
+}
+
+.header-icons:hover{
+    transform: scale(1.25);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.searchbar{
+    width: 700px;
+    border: none;
+}
+
+.searchButton{
+    background-color: transparent;
+    width: auto;
+    border: none;
+}

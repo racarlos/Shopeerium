@@ -1,0 +1,43 @@
+<div class="container align-items-center mt-5 mb-5">
+    <div class="empty-cart px-3 bg-dark yellow">
+
+        <div class="img-container centered mt-3" *ngIf="transactionSuccessful">
+            <img src='../../assets/seller-page/success.svg'>
+        </div>
+
+        <div class="img-container centered mt-3" *ngIf="!transactionSuccessful">
+            <img src='../../assets/seller-page/fail.svg'>
+        </div>
+
+        <div class="centered white mt-2" *ngIf="transactionSuccessful">
+            <p>
+                Operation <span class="success"> Successful! </span> 
+                {{message}} 
+            </p>
+        </div>
+
+        <div class="centered white mt-2" *ngIf="!transactionSuccessful">
+            <p>
+                Operation <span class="fail"> Failed! </span> 
+                {{message}} 
+                Tip: Make sure all inputs are filled with valid values.
+            </p>
+        </div>
+
+        <!-- Show if Used in Registration -->
+        <div class="centered mt-2 mb-4" *ngIf="origin==='registration'">
+            <button class="btn checkout-btn" routerLink="/login">
+                Back to Login 
+            </button>
+        </div>
+
+        <!-- Show if used in Shop utils -->
+        <div class="centered mt-2 mb-4" *ngIf="origin==='shop-page'">
+            <button class="btn checkout-btn" routerLink="/shop/{{sellerUsername}}">
+                Back to Shop Page
+            </button>
+        </div>
+
+
+    </div>
+</div>

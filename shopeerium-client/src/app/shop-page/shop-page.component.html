@@ -1,0 +1,132 @@
+<div class="container mt-4 ">
+
+    <!-- Seller Details -->
+    <div class="row seller-page-header bg-dark text-white" *ngIf="shop">
+        
+        <div class="col-sm-3 mx-3 mt-1">
+            <div class="shop-logo">
+                <img src="{{shop.shopLogo}}" alt="shop-logo"/>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-5">
+
+            <div class="row h-50 centered shop-name yellow ">
+                {{shop.shopName}}
+            </div>
+
+            <div class="row h-50 ">
+                <div class="label mt-1">
+                    <img class="shop-header-icon" src="../../assets/seller-page/telephone.svg" > 
+                    Contact Number :  <span class="orange"> (+63) {{shop.number}} </span>
+                </div>
+
+                <div class="label h-25">
+                    <img class="shop-header-icon" src="../../assets/seller-page/email.svg" > 
+                    Email Address :  <span class="orange"> {{shop.email}} </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="label mt-4">
+                <img class="shop-header-icon" src="../../assets/seller-page/user.svg" > 
+                Shop Owner: <span class="orange"> {{shop.sellerUsername}} </span>
+            </div>
+            
+            <div class="label mt-4">
+                <img class="shop-header-icon" src="../../assets/seller-page/shopping-bag.svg" > 
+                Product Count: <span class="orange"> {{shop.productCount}} </span>
+            </div>
+
+            <div class="label mt-4">
+
+                <img class="shop-header-icon" src="../../assets/seller-page/calendar.svg" > 
+                Date Joined : <span class="orange"> {{shop.dateJoined}} </span>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row seller-page-utils centered mt-3 mb-3 text-white bg-dark" *ngIf="isOwner&&role==='seller'">
+
+
+        <div class="col-sm-3 mx-3 mt-3 mb-3">
+
+            <a routerLink="add-product">
+                <div>
+                    <div class="centered mt-2">
+                        <img class="row util-image"src="../../assets/seller-page/add-product.svg">
+                    </div>
+        
+                    <p class="label centered">
+                        Add Product
+                    </p>    
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-3 mx-3 ">
+            <a routerLink="edit-product">
+                <div>
+                    <div class="centered mt-2">
+                        <img class="util-image"src="../../assets/seller-page/edit-product.svg">
+                    </div>
+        
+                    <p class="label centered">
+                        Edit Product
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-sm-3 mx-3">
+
+            <a routerLink="delete-product">
+                <div>
+                    <div class="centered mt-2">
+                        <img class="util-image"src="../../assets/seller-page/delete-product.svg">
+                    </div>
+    
+                    <p class="label centered">
+                        Delete Product
+                    </p>
+                
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-sm-3 mx-3">
+            <a routerLink="edit-shop">
+                <div>   
+                    <div class="centered mt-2">
+                        <img class="util-image"src="../../assets/seller-page/edit-shop.svg">
+                    </div>
+        
+                    <p class="label centered">
+                        Customize Shop
+                    </p>
+                </div>
+            </a> 
+        </div>
+        
+
+    </div>
+
+    <div class="row" *ngIf="products" >
+
+        <span class="bg-dark yellow label centered mt-3 products-sold">
+            <h3 class=" my-2"> Products Sold By: {{shopOwner}}</h3>
+        </span>
+        
+        <app-product-list [products]="products" [productLength]="products.length"></app-product-list>
+    </div> 
+
+</div>

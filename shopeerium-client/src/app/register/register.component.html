@@ -1,0 +1,173 @@
+<div class="container register-container mb-5 p-3 bg-dark" *ngIf="!finishedUserData&&!finishedTransaction">
+
+    <img class="register-icon centered mt-3" src="../../assets/general/register.svg">
+
+    <form #registerUserForm="ngForm" (ngSubmit)="validateRegInfo(registerUserForm.value)" class="mt-1" ngNativeValidate>
+
+        <h3 class="yellow centered mb-4">  Register Here </h3>
+            
+        <div class="mb-3">
+            <label for="username" class="form-label yellow label">
+                Username *
+            </label>
+            <input class="form-control" [(ngModel)]="username" type="text" name="username" id="username" placeholder=""
+            minlength="4" maxlength="16" pattern="^[a-zA-Z0-9.]{4,16}$" required>
+            <div class="form-text">
+                Username must be 4-16 characters long and can have alphanumeric characters and periods.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label yellow label">
+                Password *
+            </label> 
+            <input class="form-control" [(ngModel)]="password" type="password" name="password" id="password" placeholder=""
+            minlength="8" maxlength="32" pattern="^.{8,32}$" required>
+            <div class="form-text">
+                Password must be 8-32 characters long and can contain any character.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="passwordConfirm" class="form-label yellow label">
+                Password Confirmation *
+            </label>
+            <input class="form-control" [(ngModel)]="passwordConfirm" type="password" name="passwordConfirm" id="passwordConfirm"
+            minlength="8" maxlength="32" pattern="^.{8,32}$" required>
+            <div class="form-text">
+                Please type in your password again.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mb-3">
+                <label for="firstName" class="form-label yellow label">
+                    First Name *
+                </label>
+                <input class="form-control" [(ngModel)]="firstName" type="text" name="firstName" id="firstName" placeholder="Cardo"
+                minlength="2" maxlength="32" pattern="^[a-zA-Z]{2,32}$" required>
+    
+            </div>
+    
+            <div class="col mb-3">
+                <label for="lastName" class="form-label yellow label">
+                    Last Name * 
+                </label>
+                <input class="form-control" [(ngModel)]="lastName" type="text" name="lastName" id="lastName" placeholder="Dalisay"
+                minlength="2" maxlength="32" pattern="^[a-zA-Z]{2,32}$" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="number" class="form-label yellow label">
+                Number *
+            </label> 
+            <input class="form-control" [(ngModel)]="number" type="number" name="number" id="number" placeholder="09123456789"
+            minlength="11" maxlength="11" pattern="^09[0-9]{9}$" required>
+            <div class="form-text">
+                Input your 11 Digit Mobile Number
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="password" class="form-label yellow label">
+                Email Address *
+            </label> 
+            <input class="form-control" [(ngModel)]="email" type="email" name="email" id="email" placeholder=""
+            minlength="3" maxlength="64" pattern="^.{3,64}$" required>
+            <div class="form-text">
+                Your email address will be used to contact you with regards to transactions.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="imgUrl" class="form-label label upload-label yellow">
+                Upload User Image *
+            </label>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <input class="form-control" type="file" accept=".jpg,.jpeg,.png,.jfif" (change)="selectImage($event)"
+                    name="imageFile" id="imageFile" required>    
+                </div>
+    
+            </div>
+        </div>
+
+        
+        <div class="mb-4">
+            <label for="password" class="form-label yellow label">
+                Role* 
+            </label> 
+            <select class="form-select" [(ngModel)]="role" name="role" id="role" required>
+
+                <option [ngValue]="undefined" selected disabled hidden> Choose whether this account will be a seller or buyer. </option>
+                <option value="seller"> Seller </option>
+                <option value="buyer"> Buyer </option>
+
+            </select>
+        </div>
+                
+        <button class="register-button btn mb-3" [disabled]="!hasFile" type="submit">
+            Submit
+        </button>
+
+        <div class="error-message centered bg-danger" *ngIf="hasError">
+            {{errorMessage}}
+        </div>
+
+    </form>
+</div>
+
+
+
+<div class="container register-container mb-5 p-3 bg-dark" *ngIf="isSeller && finishedUserData &&!finishedTransaction">
+
+    <img class="register-icon centered mt-3" src="../../assets/general/register.svg">
+
+    <form #registerShopForm="ngForm" (ngSubmit)="validateShopInfo(registerShopForm.value)" class="mt-1" ngNativeValidate>
+        <h3 class="yellow centered mb-4">  Register Your Shop Here </h3>
+
+        <div class="mb-3">
+            <label for="shopName" class="form-label yellow label">
+                Shop Name *
+            </label>
+            <input class="form-control" [(ngModel)]="shopName" type="text" name="shopName" id="shopName" placeholder="My Awesome Shop"
+            minlength="3" maxlength="32" pattern="^.{3,32}$" required>
+            <div class="form-text">
+                Shop name must be 3-32 characters long and can have any characters.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="imgUrl" class="form-label label upload-label yellow">
+                Upload Shop Image *
+            </label>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <input class="form-control" type="file" accept=".jpg,.jpeg,.png,.jfif" (change)="selectImage($event)"
+                    name="imageFile" id="imageFile" required>    
+                </div>
+            </div>
+        </div>
+
+
+        <button class="register-button btn mb-3" [disabled]="!hasFile" type="submit">
+            Submit
+        </button>
+
+        <div class="error-message centered bg-danger" *ngIf="hasError">
+            {{errorMessage}}
+        </div>
+
+    </form>
+</div>
+
+
+<div *ngIf="finishedTransaction">
+    <app-transaction-complete [transactionSuccessful]="transactionSuccessful"
+    [sellerUsername]="username" [message]="message" [origin]="'registration'"> 
+    </app-transaction-complete>
+</div>

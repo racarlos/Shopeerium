@@ -1,0 +1,33 @@
+.checkout{
+    height: 100px;
+    background-color: #212529;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.description{
+    margin: 0 auto;
+    height:50px;
+    width: 80%;
+    background-color: #212529;
+}
+
+
+
+.empty-cart{
+    border: black 3px solid;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.img-container{
+    height: 70%;
+}
+.empty-cart img{
+    object-fit: contain;
+}
+
+.empty-cart p{
+    font-size: x-large;
+    font-weight: 500;
+}
