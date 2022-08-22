@@ -1,0 +1,2 @@
+# Shopeerium
+Shopeerium is full-stack application based on the popular e-commerce site Shopee. Unlike Shopee which requires you to have money, in here you can checkout items to your heart's content. In Shopeerium you can buy items as a regular user or set-up your own shop as a seller without worrying about taxes. The front-end of the application was made using Angular and Bootstrap 5 while the backend uses NodeJS with a mySQL database paired with Redis for document storage. Real-time updates are also implemented using Socket.IO.
