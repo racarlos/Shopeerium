@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  #  Frontend
+  client:
+    build: ./client
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client/:/app
+    command: bash start.sh
+    environment:
+      - PORT=8080
+
+  # Backend
+  server:
+    build: ./server
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server/:/app
+    environment:
+      - DB_NAME=mydb
+      - DB_HOST=database
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=password
+    depends_on:
+      - database
+    command: "bash start.sh database:3306"
+
+  # MySQL Database
+  database:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ROOT_PASSWORD=password
