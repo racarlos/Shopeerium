@@ -1,16 +1,20 @@
-versversion: "3"
+version: "3"
 
 services:
   shopeerium_client:
     build: shopeerium-client
     ports:
-      - 80:80
+      - 4200:4200
+    volumes:
+      - ./shopeerium-client/:/app
     command: "bash start.sh"
 
   shopeerium_server:
     build: shopeerium-server
     ports:
       - 3000:3000
+    volumes:
+      - ./shopeerium-server/:/app
     environment:
       - DB_NAME=shopeeriumdb # name of mysql db
       - DB_HOST=shopeerium_sql # name of docker container references mysqldb below
