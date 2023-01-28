@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  shopeerium_client: 
+    extends:
+      file: docker-compose-base.yml
+      service: shopeerium_client
+    volumes:
+      - ./shopeerium-client:/app               # References folder of Node app
+    ports: 
+      - 4200:4200
+    command: 'bash start.sh'
+
+  shopeerium_server:
+    extends:
+      file: docker-compose-base.yml
+      service: shopeerium_server
+    volumes:
+      - ./shopeerium-server:/app    
+    
+  shopeerium_sql:
+    extends:
+      file: docker-compose-base.yml
+      service: shopeerium_sql
+
+  shopeerium_redis:
+    extends:
+      file: docker-compose-base.yml
+      service: shopeerium_redis
